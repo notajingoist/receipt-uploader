@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>receipt uploader</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic|PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="stylesheets/css/style.css">
+	<script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+
+	<h1>Receipt Uploader</h1>
+
+	<form id="photo-form" action="" method="">
+		<div class="hide">
+			<input id="photo-input-hidden" type="file" accept="image/*;capture=camera">
+		</div>
+		
+		<div id="photo-input-shown" class="button-input">
+			Upload a receipt!
+		</div>
+		
+		<div id="photo-submit" class="button-input" type="submit" value="Submit">
+			Submit
+		</div>
+	</form>
+
+	<div id="uploaded-filename"></div>
+	<img id="uploaded-file" src="">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery.js"><\/script>')</script>
+<script src="js/vendor/util.js"></script>
+<script src="js/src/scripts.js"></script>
+</body>
+</html>
