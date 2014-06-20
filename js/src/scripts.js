@@ -33,7 +33,16 @@ var SITE = {
 		filename = filename[filename.length-1];
 		
 		this.$uploadedFilename.html(filename);
-		this.$uploadedFile.attr('src', 'images/' + filename);
+		//this.$uploadedFile.attr('src', 'images/' + filename);
+
+		var fReader = new FileReader();
+		fReader.readAsDataURL(this.$hiddenPhotoInput[0].files[0]);
+		var context = this;
+		fReader.onloadend = function(event){
+			context.$uploadedFile.attr('src', event.target.result);
+		}
+
+
 		e.preventDefault();
 	},
 
