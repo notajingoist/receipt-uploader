@@ -33,7 +33,7 @@ var SITE = {
 		filename = filename[filename.length-1];
 		
 		this.$uploadedFilename.html(filename);
-		this.$uploadedFile.attr('src', '/receipt-uploader/images/' + filename);
+		this.$uploadedFile.attr('src', 'images/' + filename);
 		e.preventDefault();
 	},
 
