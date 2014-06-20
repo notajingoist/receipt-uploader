@@ -61,8 +61,10 @@ var SITE = {
 				context.$uploadedFile.html(context.pdfElem);
 				context.$uploadedFile.find('object').attr('data', result);
 			} else if (file.type.match(mswordType)) {
+				context.$uploadedFile.html('');
 				console.log('word doc!');
 			} else{
+				context.$uploadedFile.html('');
 				console.log('not image or pdf file!');
 			}
 		}
