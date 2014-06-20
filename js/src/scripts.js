@@ -1,6 +1,7 @@
 var SITE = {
 	init: function() {
 		this.setVars();
+		this.setTemplates();
 		this.bindEvents();
 	},
 
@@ -15,6 +16,10 @@ var SITE = {
 		this.$uploadedFile = $('#uploaded-file');
 	},
 
+	setTemplates: function() {
+		this.imageElem = '<img src="">';
+		this.pdfElem = '<object data="" type="application/pdf"></object>';
+	},
 
 	bindEvents: function() {
 		this.$shownPhotoInput.on('click', this.triggerHiddenPhotoInput.bind(this));
@@ -36,10 +41,30 @@ var SITE = {
 		//this.$uploadedFile.attr('src', 'images/' + filename);
 
 		var fReader = new FileReader();
-		fReader.readAsDataURL(this.$hiddenPhotoInput[0].files[0]);
+		var file = this.$hiddenPhotoInput[0].files[0];
+		fReader.readAsDataURL(file);
 		var context = this;
+
+		//console.log(file.type);
+
 		fReader.onloadend = function(event){
-			context.$uploadedFile.attr('src', event.target.result);
+			var result = event.target.result;
+			
+			var imageType = 'image/*';
+			var pdfType = 'application/pdf';
+			var mswordType = 'application/msword';
+
+			if (file.type.match(imageType)) {
+				context.$uploadedFile.html(context.imageElem);
+				context.$uploadedFile.find('img').attr('src', result);
+			} else if (file.type.match(pdfType)) {
+				context.$uploadedFile.html(context.pdfElem);
+				context.$uploadedFile.find('object').attr('data', result);
+			} else if (file.type.match(mswordType)) {
+				console.log('word doc!');
+			} else{
+				console.log('not image or pdf file!');
+			}
 		}
 
 
